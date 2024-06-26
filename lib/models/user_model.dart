@@ -1,24 +1,29 @@
-import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
-
-part 'user_model.g.dart';
-
-@JsonSerializable()
 class User {
-  const User({
+  int id;
+  String email;
+  String firstName;
+  String lastName;
+  String avatar;
+
+  User({
     required this.id,
-    required this.name,
-    required this.username,
     required this.email,
-    required this.phone,
+    required this.firstName,
+    required this.lastName,
+    required this.avatar,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      email: json['email'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
+      avatar: json['avatar'],
+    );
+  }
 
-  final int id;
-  final String name;
-  final String username;
-  final String email;
-  final String phone;
-}
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'emai
