@@ -5,7 +5,7 @@ class UserApiProvider {
   Future<User> fetchUser(int id) async {
     try {
       final response =
-          await Dio().get('https://jsonplaceholder.typicode.com/users/$id');
+          await Dio().get('https://reqres.in/api/users?page=2');
       final data = response.data;
       User user = User.fromJson(data as Map<String, dynamic>);
       return user;
